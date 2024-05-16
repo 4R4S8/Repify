@@ -8,23 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FitnessTrackerApp
+namespace FitnessTrackerApp.Forms
 {
-    public partial class Form1 : Form
+    public partial class AddEditRoutinForm : Form
     {
-        public Form1()
+        public AddEditRoutinForm()
         {
             InitializeComponent();
-        }
-
-        private void sidePanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void HomeBtn_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

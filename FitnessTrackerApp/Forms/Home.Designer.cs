@@ -57,7 +57,13 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DateLbl = new System.Windows.Forms.Label();
+            this.recordTab = new System.Windows.Forms.TabPage();
+            this.recordsPanel = new System.Windows.Forms.Panel();
+            this.recordDetailsDGV = new System.Windows.Forms.DataGridView();
+            this.routinsList = new System.Windows.Forms.ListBox();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.delRecBtn = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.HomeTab.SuspendLayout();
@@ -73,6 +79,9 @@
             this.exercisPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
+            this.recordTab.SuspendLayout();
+            this.recordsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recordDetailsDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,6 +110,7 @@
             this.Tabs.Controls.Add(this.HomeTab);
             this.Tabs.Controls.Add(this.Routins);
             this.Tabs.Controls.Add(this.Exercises);
+            this.Tabs.Controls.Add(this.recordTab);
             this.Tabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Tabs.Location = new System.Drawing.Point(3, 51);
             this.Tabs.Name = "Tabs";
@@ -410,6 +420,61 @@
             this.DateLbl.TabIndex = 6;
             this.DateLbl.Text = "[yyyy/mm/dd]";
             // 
+            // recordTab
+            // 
+            this.recordTab.Controls.Add(this.recordsPanel);
+            this.recordTab.Location = new System.Drawing.Point(4, 39);
+            this.recordTab.Name = "recordTab";
+            this.recordTab.Padding = new System.Windows.Forms.Padding(3);
+            this.recordTab.Size = new System.Drawing.Size(1282, 738);
+            this.recordTab.TabIndex = 3;
+            this.recordTab.Text = "Records";
+            this.recordTab.UseVisualStyleBackColor = true;
+            // 
+            // recordsPanel
+            // 
+            this.recordsPanel.BackColor = System.Drawing.Color.Linen;
+            this.recordsPanel.Controls.Add(this.routinsList);
+            this.recordsPanel.Controls.Add(this.recordDetailsDGV);
+            this.recordsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recordsPanel.Location = new System.Drawing.Point(3, 3);
+            this.recordsPanel.Name = "recordsPanel";
+            this.recordsPanel.Size = new System.Drawing.Size(1276, 732);
+            this.recordsPanel.TabIndex = 0;
+            // 
+            // recordDetailsDGV
+            // 
+            this.recordDetailsDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordDetailsDGV.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.recordDetailsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.recordDetailsDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.delRecBtn});
+            this.recordDetailsDGV.Location = new System.Drawing.Point(332, 44);
+            this.recordDetailsDGV.Name = "recordDetailsDGV";
+            this.recordDetailsDGV.RowHeadersWidth = 51;
+            this.recordDetailsDGV.RowTemplate.Height = 24;
+            this.recordDetailsDGV.Size = new System.Drawing.Size(908, 656);
+            this.recordDetailsDGV.TabIndex = 0;
+            // 
+            // routinsList
+            // 
+            this.routinsList.FormattingEnabled = true;
+            this.routinsList.ItemHeight = 16;
+            this.routinsList.Location = new System.Drawing.Point(28, 40);
+            this.routinsList.Name = "routinsList";
+            this.routinsList.Size = new System.Drawing.Size(284, 660);
+            this.routinsList.TabIndex = 1;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::FitnessTrackerApp.Properties.Resources.images;
+            this.dataGridViewImageColumn1.MinimumWidth = 6;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 125;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -420,6 +485,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // delRecBtn
+            // 
+            this.delRecBtn.HeaderText = "";
+            this.delRecBtn.Image = global::FitnessTrackerApp.Properties.Resources.images;
+            this.delRecBtn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.delRecBtn.MinimumWidth = 6;
+            this.delRecBtn.Name = "delRecBtn";
+            this.delRecBtn.ToolTipText = "Delete";
+            this.delRecBtn.Width = 125;
             // 
             // Home
             // 
@@ -450,6 +525,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.recordTab.ResumeLayout(false);
+            this.recordsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.recordDetailsDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -487,5 +565,11 @@
         private System.Windows.Forms.Label routinNameLbl;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button startRoutBtn;
+        private System.Windows.Forms.TabPage recordTab;
+        private System.Windows.Forms.Panel recordsPanel;
+        private System.Windows.Forms.ListBox routinsList;
+        private System.Windows.Forms.DataGridView recordDetailsDGV;
+        private System.Windows.Forms.DataGridViewImageColumn delRecBtn;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
     }
 }
