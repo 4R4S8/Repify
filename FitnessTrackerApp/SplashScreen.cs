@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace FitnessTrackerApp
 {
-    public partial class Form1 : Form
+    public partial class SplashScreen : Form
     {
-        public Form1()
+        public SplashScreen()
         {
             InitializeComponent();
-        }
-
-        private void sidePanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void HomeBtn_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
