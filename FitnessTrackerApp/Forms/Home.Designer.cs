@@ -44,6 +44,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Routins = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.addRoutinBtn = new System.Windows.Forms.Button();
+            this.routinPanel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.routinNameLbl = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.startRoutBtn = new System.Windows.Forms.Button();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.Exercises = new System.Windows.Forms.TabPage();
             this.exercisPanel = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -57,6 +65,10 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Routins.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.routinPanel.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.Exercises.SuspendLayout();
             this.exercisPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -142,70 +154,77 @@
             // exrRecordLbl
             // 
             this.exrRecordLbl.AutoSize = true;
-            this.exrRecordLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exrRecordLbl.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exrRecordLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.exrRecordLbl.Location = new System.Drawing.Point(61, 427);
             this.exrRecordLbl.Name = "exrRecordLbl";
-            this.exrRecordLbl.Size = new System.Drawing.Size(130, 42);
+            this.exrRecordLbl.Size = new System.Drawing.Size(129, 39);
             this.exrRecordLbl.TabIndex = 5;
             this.exrRecordLbl.Text = "[record]";
             // 
             // exrVolumeLbl
             // 
             this.exrVolumeLbl.AutoSize = true;
-            this.exrVolumeLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exrVolumeLbl.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exrVolumeLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.exrVolumeLbl.Location = new System.Drawing.Point(61, 292);
             this.exrVolumeLbl.Name = "exrVolumeLbl";
-            this.exrVolumeLbl.Size = new System.Drawing.Size(143, 42);
+            this.exrVolumeLbl.Size = new System.Drawing.Size(141, 39);
             this.exrVolumeLbl.TabIndex = 5;
             this.exrVolumeLbl.Text = "[000 KG]";
             // 
             // exrTimeLbl
             // 
             this.exrTimeLbl.AutoSize = true;
-            this.exrTimeLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exrTimeLbl.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exrTimeLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.exrTimeLbl.Location = new System.Drawing.Point(61, 157);
             this.exrTimeLbl.Name = "exrTimeLbl";
-            this.exrTimeLbl.Size = new System.Drawing.Size(160, 42);
+            this.exrTimeLbl.Size = new System.Drawing.Size(159, 39);
             this.exrTimeLbl.TabIndex = 5;
             this.exrTimeLbl.Text = "[00:00:00]";
             // 
             // latestExcerizeNameLbl
             // 
             this.latestExcerizeNameLbl.AutoSize = true;
-            this.latestExcerizeNameLbl.Font = new System.Drawing.Font("Microsoft Tai Le", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.latestExcerizeNameLbl.Font = new System.Drawing.Font("Microsoft YaHei UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.latestExcerizeNameLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.latestExcerizeNameLbl.Location = new System.Drawing.Point(19, 17);
             this.latestExcerizeNameLbl.Name = "latestExcerizeNameLbl";
-            this.latestExcerizeNameLbl.Size = new System.Drawing.Size(299, 48);
+            this.latestExcerizeNameLbl.Size = new System.Drawing.Size(322, 50);
             this.latestExcerizeNameLbl.TabIndex = 4;
             this.latestExcerizeNameLbl.Text = "[exercise_name]";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label4.Location = new System.Drawing.Point(20, 371);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 41);
+            this.label4.Size = new System.Drawing.Size(124, 40);
             this.label4.TabIndex = 3;
             this.label4.Text = "Record";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label3.Location = new System.Drawing.Point(20, 236);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 41);
+            this.label3.Size = new System.Drawing.Size(132, 40);
             this.label3.TabIndex = 2;
             this.label3.Text = "Volume";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label2.Location = new System.Drawing.Point(20, 101);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 41);
+            this.label2.Size = new System.Drawing.Size(91, 40);
             this.label2.TabIndex = 1;
             this.label2.Text = "Time";
             // 
@@ -227,10 +246,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(30, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(298, 51);
+            this.label1.Size = new System.Drawing.Size(346, 60);
             this.label1.TabIndex = 0;
             this.label1.Text = "Latest Exercise";
             // 
@@ -246,11 +265,97 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.addRoutinBtn);
+            this.panel3.Controls.Add(this.routinPanel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1282, 738);
             this.panel3.TabIndex = 0;
+            // 
+            // addRoutinBtn
+            // 
+            this.addRoutinBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.addRoutinBtn.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addRoutinBtn.Location = new System.Drawing.Point(16, 15);
+            this.addRoutinBtn.Name = "addRoutinBtn";
+            this.addRoutinBtn.Size = new System.Drawing.Size(231, 63);
+            this.addRoutinBtn.TabIndex = 1;
+            this.addRoutinBtn.Text = "Add New Routin ...";
+            this.addRoutinBtn.UseVisualStyleBackColor = false;
+            // 
+            // routinPanel
+            // 
+            this.routinPanel.BackColor = System.Drawing.Color.LavenderBlush;
+            this.routinPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.routinPanel.Controls.Add(this.panel5);
+            this.routinPanel.Controls.Add(this.vScrollBar1);
+            this.routinPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.routinPanel.Location = new System.Drawing.Point(0, 93);
+            this.routinPanel.Name = "routinPanel";
+            this.routinPanel.Size = new System.Drawing.Size(1282, 645);
+            this.routinPanel.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.OldLace;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.dataGridView3);
+            this.panel5.Controls.Add(this.routinNameLbl);
+            this.panel5.Controls.Add(this.groupBox1);
+            this.panel5.Controls.Add(this.startRoutBtn);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1252, 190);
+            this.panel5.TabIndex = 0;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(426, 25);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersWidth = 51;
+            this.dataGridView3.RowTemplate.Height = 24;
+            this.dataGridView3.Size = new System.Drawing.Size(527, 146);
+            this.dataGridView3.TabIndex = 6;
+            // 
+            // routinNameLbl
+            // 
+            this.routinNameLbl.AutoSize = true;
+            this.routinNameLbl.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.routinNameLbl.Location = new System.Drawing.Point(23, 25);
+            this.routinNameLbl.Name = "routinNameLbl";
+            this.routinNameLbl.Size = new System.Drawing.Size(123, 23);
+            this.routinNameLbl.TabIndex = 5;
+            this.routinNameLbl.Text = "[routin_name]";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(27, 61);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(350, 110);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            // 
+            // startRoutBtn
+            // 
+            this.startRoutBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startRoutBtn.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startRoutBtn.Location = new System.Drawing.Point(1052, 66);
+            this.startRoutBtn.Name = "startRoutBtn";
+            this.startRoutBtn.Size = new System.Drawing.Size(169, 64);
+            this.startRoutBtn.TabIndex = 2;
+            this.startRoutBtn.Text = "Start Routin";
+            this.startRoutBtn.UseVisualStyleBackColor = false;
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.vScrollBar1.Location = new System.Drawing.Point(1252, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(28, 643);
+            this.vScrollBar1.TabIndex = 1;
             // 
             // Exercises
             // 
@@ -275,13 +380,13 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 127);
+            this.dataGridView2.Location = new System.Drawing.Point(35, 91);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(1276, 605);
+            this.dataGridView2.Size = new System.Drawing.Size(1213, 605);
             this.dataGridView2.TabIndex = 0;
             // 
             // panel2
@@ -335,6 +440,11 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Routins.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.routinPanel.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.Exercises.ResumeLayout(false);
             this.exercisPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -369,5 +479,13 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel exercisPanel;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Panel routinPanel;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button addRoutinBtn;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Label routinNameLbl;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button startRoutBtn;
     }
 }
