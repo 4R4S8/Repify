@@ -37,20 +37,20 @@
             this.finishBtn = new System.Windows.Forms.Button();
             this.routinNameLbl = new System.Windows.Forms.Label();
             this.timespanLbl = new System.Windows.Forms.Label();
-            this.closePic = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.exerciseNameLbl = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.repLbl = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.setDoneCheck = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.closePic = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.closePic)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePic)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -154,17 +154,6 @@
             this.timespanLbl.TabIndex = 4;
             this.timespanLbl.Text = "[00:00:00]";
             // 
-            // closePic
-            // 
-            this.closePic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.closePic.Image = global::FitnessTrackerApp.Properties.Resources.new_text_logo_repify_small_;
-            this.closePic.Location = new System.Drawing.Point(1029, 3);
-            this.closePic.Name = "closePic";
-            this.closePic.Size = new System.Drawing.Size(25, 77);
-            this.closePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.closePic.TabIndex = 3;
-            this.closePic.TabStop = false;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -188,14 +177,6 @@
             this.exerciseNameLbl.TabIndex = 5;
             this.exerciseNameLbl.Text = "[exercise]";
             this.exerciseNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(933, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // repLbl
             // 
@@ -226,6 +207,27 @@
             this.setDoneCheck.Text = "Done";
             this.setDoneCheck.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FitnessTrackerApp.Properties.Resources._28931101_Scissors__advanced___female__small_thumbnail_3x;
+            this.pictureBox1.Location = new System.Drawing.Point(945, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // closePic
+            // 
+            this.closePic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.closePic.Image = global::FitnessTrackerApp.Properties.Resources.new_text_logo_repify_small_;
+            this.closePic.Location = new System.Drawing.Point(1029, 3);
+            this.closePic.Name = "closePic";
+            this.closePic.Size = new System.Drawing.Size(25, 77);
+            this.closePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.closePic.TabIndex = 3;
+            this.closePic.TabStop = false;
+            // 
             // WorkoutPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -239,11 +241,11 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.closePic)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePic)).EndInit();
             this.ResumeLayout(false);
 
         }

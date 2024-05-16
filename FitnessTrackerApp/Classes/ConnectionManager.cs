@@ -1,12 +1,11 @@
-﻿using System;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 using System.IO;
 
 namespace FitnessTrackerApp.Classes
 {
     internal class ConnectionManager
     {
-        void CreateDataBase()
+        internal void CreateDataBase()
         {
             if (!File.Exists("Repify.sqlite"))
             {
@@ -21,10 +20,27 @@ namespace FitnessTrackerApp.Classes
 
                     using (var cmd = new SQLiteCommand(conn))
                     {
-                        //Create a table named Employee
-                        //cmd.CommandText = "CREATE TABLE Employee (Id INTEGER PRIMARY KEY, Name TEXT, Job TEXT)";
-                        //cmd.ExecuteNonQuery();
+                        //Create a table named Exercise
+                        cmd.CommandText = "CREATE TABLE Exercise (exercise_guid TEXT, Name TEXT, muscle_group TEXT)";
+                        cmd.ExecuteNonQuery();
 
+                        //Create a table named Routine
+
+                        cmd.CommandText = "CREATE TABLE Routine (routine_guid TEXT, Name TEXT, workout_list_guid TEXT)";
+                        cmd.ExecuteNonQuery();
+
+                        //Create a table named workout_list
+
+                        cmd.CommandText = "CREATE TABLE workout_list (workout_list_guid TEXT, routine_guid TEXT, exercise_guid TEXT, rest_time TEXT, rep INTEGER)";
+                        cmd.ExecuteNonQuery();
+
+                        //Create a table named Records
+                        cmd.CommandText = "CREATE TABLE records (records_guid TEXT, workout_list_guid TEXT, rep INTEGER, total_weight INTEGER)";
+                        cmd.ExecuteNonQuery();
+
+                        //Create a table named Routin Record
+                        cmd.CommandText = "CREATE TABLE routin_record (routine_guid TEXT, total_weight INTEGER, time_span TEXT, date TEXT)";
+                        cmd.ExecuteNonQuery();
                         // Insert some data into the table
 
                         //cmd.CommandText = "CREATE TABLE services (id INTEGER PRIMARY KEY,name TEXT NOT NULL, price REAL NOT NULL, duration INTEGER NOT NULL)";
@@ -37,15 +53,15 @@ namespace FitnessTrackerApp.Classes
 
 
                         // Query the data from the table
-                        cmd.CommandText = "SELECT Id FROM Employee where Name = 'Alice'";
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            // Loop through the results and print them to the console
-                            while (reader.Read())
-                            {
-                                Console.WriteLine($"Id: {reader["Id"]}")/*, Name: {reader["Name"]}, Job: {reader["Job"]}")*/;
-                            }
-                        }
+                        //cmd.CommandText = "SELECT Id FROM Employee where Name = 'Alice'";
+                        //using (var reader = cmd.ExecuteReader())
+                        //{
+                        //    // Loop through the results and print them to the console
+                        //    while (reader.Read())
+                        //    {
+                        //        Console.WriteLine($"Id: {reader["Id"]}")/*, Name: {reader["Name"]}, Job: {reader["Job"]}")*/;
+                        //    }
+                        //}
                     }
                 }
             }

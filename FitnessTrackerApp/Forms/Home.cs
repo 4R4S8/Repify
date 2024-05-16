@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using FitnessTrackerApp.Classes;
+using System.Windows.Forms;
 
 namespace FitnessTrackerApp
 {
@@ -7,6 +8,8 @@ namespace FitnessTrackerApp
         public Home()
         {
             InitializeComponent();
+            ConnectionManager _connectionManager = new ConnectionManager();
+            _connectionManager.CreateDataBase();
         }
     }
 }

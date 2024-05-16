@@ -63,6 +63,16 @@ namespace FitnessTrackerApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _28931101_Scissors__advanced___female__small_thumbnail_3x {
+            get {
+                object obj = ResourceManager.GetObject("28931101-Scissors-(advanced)-(female)_small_thumbnail@3x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _bca137eb_e219_45e7_bc95_7646f86bbcd7 {
             get {
                 object obj = ResourceManager.GetObject("_bca137eb-e219-45e7-bc95-7646f86bbcd7", resourceCulture);
