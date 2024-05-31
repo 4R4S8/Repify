@@ -143,20 +143,30 @@ namespace FitnessTrackerApp.Classes
         internal void PopulateRoutins(Panel routinPanel)
         {
             routinPanel.Controls.Clear();
-            int x = 5;
-            for (int i = 0; i < x; i++)
+            // get routin counts
+            string query = "SELECT Name,workout_list_guid FROM Routine";
+            using (var connection = new SQLiteConnection(SQLiteConncectionString))
             {
-                string routinName = $"routin{i + 1}";
+                connection.Open();
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string routineName = reader.GetString(0);
+                            string exerciseGUID = reader.GetString(1);
                 #region Panel routin
                 Panel routin = new Panel();
-                routin.Name = routinName;
+                            routin.Name = routineName;
                 routin.Size = new Size(930, 155);
                 routin.Location = new Point(0, 155);
                 routin.BackColor = Color.Beige;
                 routin.BorderStyle = BorderStyle.FixedSingle;
                 routin.Dock = DockStyle.Top;
                 #endregion
-                AddControlsToPanel(routin, routinName);
+                            AddControlsToRoutinPanel(routin, routineName, exerciseGUID);
                 routinPanel.Controls.Add(routin);
             }
                     }
@@ -268,7 +278,7 @@ namespace FitnessTrackerApp.Classes
             _exerPanel.Controls.Add(set_repLbl);
             _exerPanel.Controls.Add(exerciseNameLbl);
         }
-        private void AddControlsToPanel(Panel routinPanel, string _routinName)
+        private void AddControlsToRoutinPanel(Panel routinPanel, string _routinName, string _exerciseGUID)
         {
             #region DataGridView routinDGV
             DataGridView routinDGV = new DataGridView();
@@ -287,7 +297,18 @@ namespace FitnessTrackerApp.Classes
             routinDGV.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             routinDGV.RowTemplate.Height = 24;
             routinDGV.Size = new Size(395, 119);
+            routinDGV.AllowUserToAddRows = false;
             #endregion
+            using (var connection = new SQLiteConnection(SQLiteConncectionString))
+            {
+                connection.Open();
+
+                var dataTable = new DataTable();
+                var dataAdapter = new SQLiteDataAdapter($"SELECT exercise_guid as \"Name\" ,weight as \"Weight\",sets as \"Set\", rep as \"Rep\" FROM workout_list WHERE workout_list_guid = '{_exerciseGUID}'", connection);
+                dataAdapter.Fill(dataTable);
+
+                routinDGV.DataSource = dataTable;
+            }
             #region Label RoutinNameLbl
 
             Label RoutinNameLbl = new Label();
@@ -312,7 +333,16 @@ namespace FitnessTrackerApp.Classes
             startRoutBtn.Click += new EventHandler(startRoutBtn_Click);
             void startRoutBtn_Click(object sender, EventArgs e)
             {
-                WorkoutPage workoutPage = new WorkoutPage(_routinName);
+                List<string[]> workoutDatas = new List<string[]>();
+                for (int i = 0; i < routinDGV.RowCount; i++)
+                {
+                    string _exerName = routinDGV.Rows[i].Cells[0].Value.ToString();
+                    string _weight = routinDGV.Rows[i].Cells[1].Value.ToString();
+                    string _set = routinDGV.Rows[i].Cells[2].Value.ToString();
+                    string _rep = routinDGV.Rows[i].Cells[3].Value.ToString();
+                    workoutDatas.Add(new string[] { _exerName, _weight, _set, _rep });
+                }
+                WorkoutPage workoutPage = new WorkoutPage(_routinName, workoutDatas);
                 workoutPage.ShowDialog();
             }
             #endregion
