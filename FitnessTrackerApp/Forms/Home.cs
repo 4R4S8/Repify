@@ -11,7 +11,10 @@ namespace FitnessTrackerApp
         public Home()
         {
             InitializeComponent();
+            SplashScreen splashScreen = new SplashScreen();
+            splashScreen.ShowDialog();
             _connectionManager.CreateDataBase();
+
         }
 
 

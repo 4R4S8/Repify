@@ -22,10 +22,7 @@ namespace FitnessTrackerApp
         private void Timer_Tick(object sender, EventArgs e)
         {
             timer.Stop();
-            //this.Dispose();
-
-            var HomeForm = new Home();
-            HomeForm.Show();
+            this.Dispose();
 
         }
     }

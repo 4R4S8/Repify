@@ -169,7 +169,7 @@
             this.exrRecordLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.exrRecordLbl.Location = new System.Drawing.Point(61, 427);
             this.exrRecordLbl.Name = "exrRecordLbl";
-            this.exrRecordLbl.Size = new System.Drawing.Size(83, 27);
+            this.exrRecordLbl.Size = new System.Drawing.Size(104, 32);
             this.exrRecordLbl.TabIndex = 5;
             this.exrRecordLbl.Text = "[record]";
             // 
@@ -180,7 +180,7 @@
             this.exrVolumeLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.exrVolumeLbl.Location = new System.Drawing.Point(61, 292);
             this.exrVolumeLbl.Name = "exrVolumeLbl";
-            this.exrVolumeLbl.Size = new System.Drawing.Size(88, 27);
+            this.exrVolumeLbl.Size = new System.Drawing.Size(111, 32);
             this.exrVolumeLbl.TabIndex = 5;
             this.exrVolumeLbl.Text = "[000 KG]";
             // 
@@ -191,7 +191,7 @@
             this.exrTimeLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.exrTimeLbl.Location = new System.Drawing.Point(61, 158);
             this.exrTimeLbl.Name = "exrTimeLbl";
-            this.exrTimeLbl.Size = new System.Drawing.Size(100, 27);
+            this.exrTimeLbl.Size = new System.Drawing.Size(126, 32);
             this.exrTimeLbl.TabIndex = 5;
             this.exrTimeLbl.Text = "[00:00:00]";
             // 
@@ -202,7 +202,7 @@
             this.latestExcerizeNameLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.latestExcerizeNameLbl.Location = new System.Drawing.Point(19, 17);
             this.latestExcerizeNameLbl.Name = "latestExcerizeNameLbl";
-            this.latestExcerizeNameLbl.Size = new System.Drawing.Size(258, 40);
+            this.latestExcerizeNameLbl.Size = new System.Drawing.Size(322, 50);
             this.latestExcerizeNameLbl.TabIndex = 4;
             this.latestExcerizeNameLbl.Text = "[exercise_name]";
             // 
@@ -213,7 +213,7 @@
             this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label4.Location = new System.Drawing.Point(20, 370);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 31);
+            this.label4.Size = new System.Drawing.Size(124, 40);
             this.label4.TabIndex = 3;
             this.label4.Text = "Record";
             // 
@@ -224,7 +224,7 @@
             this.label3.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label3.Location = new System.Drawing.Point(20, 236);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 31);
+            this.label3.Size = new System.Drawing.Size(132, 40);
             this.label3.TabIndex = 2;
             this.label3.Text = "Volume";
             // 
@@ -235,7 +235,7 @@
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label2.Location = new System.Drawing.Point(20, 101);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 31);
+            this.label2.Size = new System.Drawing.Size(91, 40);
             this.label2.TabIndex = 1;
             this.label2.Text = "Time";
             // 
@@ -261,7 +261,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(29, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(283, 49);
+            this.label1.Size = new System.Drawing.Size(346, 60);
             this.label1.TabIndex = 0;
             this.label1.Text = "Latest Exercise";
             // 
@@ -443,11 +443,11 @@
             // DateLbl
             // 
             this.DateLbl.AutoSize = true;
-            this.DateLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DateLbl.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15F);
-            this.DateLbl.Location = new System.Drawing.Point(139, 0);
+            this.DateLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.DateLbl.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateLbl.Location = new System.Drawing.Point(1067, 0);
             this.DateLbl.Name = "DateLbl";
-            this.DateLbl.Size = new System.Drawing.Size(140, 27);
+            this.DateLbl.Size = new System.Drawing.Size(223, 37);
             this.DateLbl.TabIndex = 6;
             this.DateLbl.Text = "[yyyy/mm/dd]";
             // 
