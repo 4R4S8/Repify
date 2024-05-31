@@ -11,6 +11,7 @@ namespace FitnessTrackerApp.Classes
 {
     internal class ConnectionManager
     {
+        public WorkoutPage workoutPage { get; set; }
         private readonly string _SQLiteDBPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Repify", "Repify.sqlite");
         private readonly string _SQLiteConncectionString = $"Data Source={Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Repify", "Repify.sqlite")};Version=3;";
         public string SQLiteDBPath
@@ -73,37 +74,35 @@ namespace FitnessTrackerApp.Classes
         }
         internal void InsertIntoExerciseTable(string SQLiteConncectionString)
         {
-            if (File.Exists(@"E:\4R4S8\دانشگاه\022\پروژه\FitnessTrackerApp\Assets\exercise-Name.txt")
-               && File.Exists(@"E:\4R4S8\دانشگاه\022\پروژه\FitnessTrackerApp\Assets\muscle-group.txt"))
+
+            List<string> exerciseNameFile = new List<string>();
+            List<string> muscleGroupFile = new List<string>();
+            exerciseNameFile.AddRange(File.ReadLines(/*@"E:\4R4S8\دانشگاه\022\پروژه\FitnessTrackerApp\Assets\exercise-Name.txt"*/FitnessTrackerApp.Properties.Resources.exercise_Name));
+            muscleGroupFile.AddRange(File.ReadLines(/*@"E:\4R4S8\دانشگاه\022\پروژه\FitnessTrackerApp\Assets\muscle-group.txt"*/FitnessTrackerApp.Properties.Resources.muscle_group));
+
+            using (var connection = new SQLiteConnection(SQLiteConncectionString))
             {
-                List<string> exerciseNameFile = new List<string>();
-                List<string> muscleGroupFile = new List<string>();
-                exerciseNameFile.AddRange(File.ReadLines(@"E:\4R4S8\دانشگاه\022\پروژه\FitnessTrackerApp\Assets\exercise-Name.txt"));
-                muscleGroupFile.AddRange(File.ReadLines(@"E:\4R4S8\دانشگاه\022\پروژه\FitnessTrackerApp\Assets\muscle-group.txt"));
+                connection.Open();
 
-                using (var connection = new SQLiteConnection(SQLiteConncectionString))
+                string sql = "INSERT INTO exercise  VALUES (@id, @valueA, @valueB)";
+                using (var command = new SQLiteCommand(sql, connection))
                 {
-                    connection.Open();
 
-                    string sql = "INSERT INTO exercise  VALUES (@id, @valueA, @valueB)";
-                    using (var command = new SQLiteCommand(sql, connection))
+                    if (exerciseNameFile.Count() == muscleGroupFile.Count())
                     {
-
-                        if (exerciseNameFile.Count() == muscleGroupFile.Count())
+                        var listCount = exerciseNameFile.Count();
+                        for (int i = 0; i < listCount; i++)
                         {
-                            var listCount = exerciseNameFile.Count();
-                            for (int i = 0; i < listCount; i++)
-                            {
-                                Guid newGuid = Guid.NewGuid();
-                                command.Parameters.AddWithValue("@id", newGuid.ToString());
-                                command.Parameters.AddWithValue("@valueA", exerciseNameFile[i]);
-                                command.Parameters.AddWithValue("@valueB", muscleGroupFile[i]);
-                                command.ExecuteNonQuery();
-                            }
+                            Guid newGuid = Guid.NewGuid();
+                            command.Parameters.AddWithValue("@id", newGuid.ToString());
+                            command.Parameters.AddWithValue("@valueA", exerciseNameFile[i]);
+                            command.Parameters.AddWithValue("@valueB", muscleGroupFile[i]);
+                            command.ExecuteNonQuery();
                         }
                     }
                 }
             }
+
         }
         internal void PopulateListBoxFromSqlite(ComboBox cmboBox)
         {
@@ -158,13 +157,8 @@ namespace FitnessTrackerApp.Classes
                             string routineName = reader.GetString(0);
                             string exerciseGUID = reader.GetString(1);
                             #region Panel routin
-                            Panel routin = new Panel();
+                            ExerPanel routin = new ExerPanel();
                             routin.Name = routineName;
-                            routin.Size = new Size(930, 155);
-                            routin.Location = new Point(0, 155);
-                            routin.BackColor = Color.Beige;
-                            routin.BorderStyle = BorderStyle.FixedSingle;
-                            routin.Dock = DockStyle.Top;
                             #endregion
                             AddControlsToRoutinPanel(routin, routineName, exerciseGUID);
                             routinPanel.Controls.Add(routin);
@@ -182,13 +176,9 @@ namespace FitnessTrackerApp.Classes
                 string _weight = workoutList[i][1].ToString();
                 string _set = workoutList[i][2].ToString();
                 string _rep = workoutList[i][3].ToString();
-                #region Panel exerPanel
-                Panel exerPanel = new Panel();
-                exerPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-                exerPanel.Dock = System.Windows.Forms.DockStyle.Top;
+                #region WorkoutPanel exerPanel
+                WorkoutPanel exerPanel = new WorkoutPanel();
                 exerPanel.Name = $"{_exerName}Panel";
-                exerPanel.Size = new System.Drawing.Size(1020, 77);
-                exerPanel.BorderStyle = BorderStyle.FixedSingle;
                 #endregion
                 AddControlsToExercisePanel(exerPanel, _exerName, _weight, _set, _rep, routonProgress);
                 workoutPanel.Controls.Add(exerPanel);
@@ -198,52 +188,21 @@ namespace FitnessTrackerApp.Classes
         private void AddControlsToExercisePanel(Panel _exerPanel, string _exerName, string _weight, string _set, string _rep, ProgressBar _routonProgress)
         {
             #region weight_lbl
-            Label weight_lbl = new Label();
-            weight_lbl.AutoSize = true;
-            weight_lbl.Font = new Font("Microsoft YaHei UI Light", 15F);
-            weight_lbl.ForeColor = Color.SaddleBrown;
-            weight_lbl.Location = new Point(229, 21);
-            weight_lbl.Name = "weight_lbl";
-            weight_lbl.Size = new Size(144, 32);
+            WeightLabel weight_lbl = new WeightLabel();
             weight_lbl.Text = $"{_weight} KG";
-            weight_lbl.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            weight_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             #endregion
             #region set_repLbl
-            Label set_repLbl = new Label();
-            set_repLbl.AutoSize = true;
-            set_repLbl.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15F);
-            set_repLbl.ForeColor = System.Drawing.Color.SaddleBrown;
-            set_repLbl.Location = new System.Drawing.Point(439, 21);
-            set_repLbl.Name = "set_repLbl";
-            set_repLbl.Size = new System.Drawing.Size(125, 32);
+            SetRepLabel set_repLbl = new SetRepLabel();
             set_repLbl.Text = $"{_set} × {_rep}";
-            set_repLbl.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            set_repLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             #endregion
             #region exerciseNameLbl
-            Label exerciseNameLbl = new Label();
-            exerciseNameLbl.AutoEllipsis = true;
-            exerciseNameLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            exerciseNameLbl.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 14F);
-            exerciseNameLbl.ForeColor = System.Drawing.Color.SaddleBrown;
-            exerciseNameLbl.Location = new System.Drawing.Point(615, 4);
-            exerciseNameLbl.Name = "exerciseNameLbl";
-            exerciseNameLbl.Size = new System.Drawing.Size(305, 69);
+            ExerciseNameLabel exerciseNameLbl = new ExerciseNameLabel();
             exerciseNameLbl.Text = _exerName;
-            exerciseNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            exerciseNameLbl.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            exerciseNameLbl.Anchor = AnchorStyles.Right;
+
             #endregion
             #region exerciseIsDoneCheck
-            CheckBox exerciseIsDoneCheck = new CheckBox();
-            exerciseIsDoneCheck.AutoSize = true;
-            exerciseIsDoneCheck.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15F);
-            exerciseIsDoneCheck.Location = new System.Drawing.Point(27, 15);
+            ExerciseIsDoneCheckBox exerciseIsDoneCheck = new ExerciseIsDoneCheckBox();
             exerciseIsDoneCheck.Name = $"{_exerName}IsDoneCheck";
-            exerciseIsDoneCheck.Size = new System.Drawing.Size(97, 36);
-            exerciseIsDoneCheck.Text = "Done";
-            exerciseIsDoneCheck.UseVisualStyleBackColor = true;
             exerciseIsDoneCheck.CheckedChanged += setDoneCheck_CheckedChanged;
             #region Events
             void setDoneCheck_CheckedChanged(object sender, EventArgs e)
@@ -262,16 +221,9 @@ namespace FitnessTrackerApp.Classes
             #endregion
             #endregion
             #region exerPic
-            PictureBox exerPic = new PictureBox();
-            //this.exerPic.Image = global::FitnessTrackerApp.Properties.Resources._28931101_Scissors__advanced___female__small_thumbnail_3x;
-            exerPic.Location = new System.Drawing.Point(945, 4);
+            ExercisePictureBox exerPic = new ExercisePictureBox();
             exerPic.Name = $"{_exerName}Pic";
-            exerPic.Size = new System.Drawing.Size(70, 70);
-            exerPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            exerPic.TabIndex = 6;
-            exerPic.TabStop = false;
             #endregion
-
             _exerPanel.Controls.Add(weight_lbl);
             _exerPanel.Controls.Add(exerciseIsDoneCheck);
             _exerPanel.Controls.Add(exerPic);
@@ -281,23 +233,8 @@ namespace FitnessTrackerApp.Classes
         private void AddControlsToRoutinPanel(Panel routinPanel, string _routinName, string _exerciseGUID)
         {
             #region DataGridView routinDGV
-            DataGridView routinDGV = new DataGridView();
-            routinDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            routinDGV.BackgroundColor = SystemColors.ButtonHighlight;
-            routinDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            routinDGV.EditMode = DataGridViewEditMode.EditProgrammatically;
-            routinDGV.GridColor = SystemColors.ActiveCaption;
-            routinDGV.Location = new Point(320, 20);
-            routinDGV.Margin = new Padding(2);
-            routinDGV.MultiSelect = false;
+            RoutinDGV routinDGV = new RoutinDGV();
             routinDGV.Name = $"{_routinName}DGV";
-            routinDGV.ReadOnly = true;
-            routinDGV.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            routinDGV.RowHeadersWidth = 51;
-            routinDGV.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            routinDGV.RowTemplate.Height = 24;
-            routinDGV.Size = new Size(395, 119);
-            routinDGV.AllowUserToAddRows = false;
             #endregion
             using (var connection = new SQLiteConnection(SQLiteConncectionString))
             {
@@ -342,8 +279,9 @@ namespace FitnessTrackerApp.Classes
                     string _rep = routinDGV.Rows[i].Cells[3].Value.ToString();
                     workoutDatas.Add(new string[] { _exerName, _weight, _set, _rep });
                 }
-                WorkoutPage workoutPage = new WorkoutPage(_routinName, workoutDatas);
-                workoutPage.ShowDialog();
+                WorkoutPage _workoutPage = new WorkoutPage(_routinName, workoutDatas);
+                workoutPage = _workoutPage;
+                _workoutPage.ShowDialog();
             }
             #endregion
 
@@ -397,6 +335,35 @@ namespace FitnessTrackerApp.Classes
                 return false;
             }
 
+        }
+        internal bool AddRecord(string _routinName, string _timeSpan, string _date, int _totalWeight, int _totalSet)
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(SQLiteConncectionString))
+                {
+                    connection.Open();
+                    Guid recordGUID = Guid.NewGuid();
+                    string RoutineSQL = "INSERT INTO routin_record VALUES (@guid, @name,@total_set,@total_weight,@time_span,@date)";
+                    using (var command = new SQLiteCommand(RoutineSQL, connection))
+                    {
+                        command.Parameters.AddWithValue("@guid", recordGUID.ToString());
+                        command.Parameters.AddWithValue("@name", _routinName);
+                        command.Parameters.AddWithValue("@total_set", _totalSet);
+                        command.Parameters.AddWithValue("@total_weight", _totalWeight);
+                        command.Parameters.AddWithValue("@time_span", _timeSpan);
+                        command.Parameters.AddWithValue("@date", _date);
+                        command.ExecuteNonQuery();
+
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unxpected error has accured.\n Please try again later \n\n {ex.Message}", "Repify", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 

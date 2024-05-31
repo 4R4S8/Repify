@@ -117,29 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="new text logo repify" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new text logo repify.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="new text logo repify(small)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new text logo repify(small).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_bca137eb-e219-45e7-bc95-7646f86bbcd7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\_bca137eb-e219-45e7-bc95-7646f86bbcd7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Repify LOGO BWpng" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Repify LOGO BWpng.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="28931101-Scissors-(advanced)-(female)_small_thumbnail@3x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\28931101-Scissors-(advanced)-(female)_small_thumbnail@3x.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="muscle-group" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\muscle-group.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="exercise_Name" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exercise-Name.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
 </root>

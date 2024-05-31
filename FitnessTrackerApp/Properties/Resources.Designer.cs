@@ -22,7 +22,7 @@ namespace FitnessTrackerApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace FitnessTrackerApp.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FitnessTrackerApp.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace FitnessTrackerApp.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace FitnessTrackerApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _28931101_Scissors__advanced___female__small_thumbnail_3x {
+        public static System.Drawing.Bitmap _28931101_Scissors__advanced___female__small_thumbnail_3x {
             get {
                 object obj = ResourceManager.GetObject("28931101-Scissors-(advanced)-(female)_small_thumbnail@3x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace FitnessTrackerApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _bca137eb_e219_45e7_bc95_7646f86bbcd7 {
+        public static System.Drawing.Bitmap _bca137eb_e219_45e7_bc95_7646f86bbcd7 {
             get {
                 object obj = ResourceManager.GetObject("_bca137eb-e219-45e7-bc95-7646f86bbcd7", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -81,9 +81,41 @@ namespace FitnessTrackerApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bicep Curl
+        ///Ab Scissors
+        ///Ab Wheel
+        ///Aerobics
+        ///Air Bike
+        ///Arnold Press (Dumbbell)
+        ///Around The World
+        ///Assisted Pistol Squats
+        ///Back Extension (Hyperextension)
+        ///Back Extension (Machine)
+        ///Back Extension (Weighted Hyperextension)
+        ///Ball Slams
+        ///Band Pullaparts
+        ///Battle Ropes
+        ///Behind the Back Bicep Wrist Curl (Barbell)
+        ///Bench Dip
+        ///Bench Press (Barbell)
+        ///Bench Press (Cable)
+        ///Bench Press (Dumbbell)
+        ///Bench Press (Smith Machine)
+        ///Bench Press - Close Grip (Barbell)
+        ///Bench Press - Wide Grip (Barbell)
+        ///Bent Over Row (Band)
+        ///B [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string exercise_Name {
+            get {
+                return ResourceManager.GetString("exercise_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap images {
+        public static System.Drawing.Bitmap images {
             get {
                 object obj = ResourceManager.GetObject("images", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -91,9 +123,72 @@ namespace FitnessTrackerApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Biceps
+        ///Abdominals
+        ///Abdominals
+        ///Cardio
+        ///Cardio
+        ///Shoulders
+        ///Chest
+        ///Quadriceps
+        ///Lower Back
+        ///Lower Back
+        ///Lower Back
+        ///Full Body
+        ///Shoulders
+        ///Cardio
+        ///Forearms
+        ///Triceps
+        ///Chest
+        ///Chest
+        ///Chest
+        ///Chest
+        ///Triceps
+        ///Chest
+        ///Upper Back
+        ///Upper Back
+        ///Upper Back
+        ///Biceps
+        ///Biceps
+        ///Biceps
+        ///Biceps
+        ///Biceps
+        ///Abdominals
+        ///Abdominals
+        ///Glutes
+        ///Quadriceps
+        ///Quadriceps
+        ///Cardio
+        ///Quadriceps
+        ///Full Body
+        ///Full Body
+        ///Chest
+        ///Abdominals
+        ///Abdominals
+        ///Chest
+        ///Glutes
+        ///Abdominals
+        ///Abdominals
+        ///Calves
+        ///Calves
+        ///Chest
+        ///Chest
+        ///Chest
+        ///Chest
+        ///Chest
+        ///Chest
+        ///Che [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string muscle_group {
+            get {
+                return ResourceManager.GetString("muscle-group", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap new_text_logo_repify {
+        public static System.Drawing.Bitmap new_text_logo_repify {
             get {
                 object obj = ResourceManager.GetObject("new text logo repify", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +198,7 @@ namespace FitnessTrackerApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap new_text_logo_repify_small_ {
+        public static System.Drawing.Bitmap new_text_logo_repify_small_ {
             get {
                 object obj = ResourceManager.GetObject("new text logo repify(small)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +208,7 @@ namespace FitnessTrackerApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Repify_LOGO_BWpng {
+        public static System.Drawing.Bitmap Repify_LOGO_BWpng {
             get {
                 object obj = ResourceManager.GetObject("Repify LOGO BWpng", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

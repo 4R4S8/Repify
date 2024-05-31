@@ -526,6 +526,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "WorkoutPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.WorkoutPage_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WorkoutPage_Closing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.routinPanel.ResumeLayout(false);
             this.exerPanel.ResumeLayout(false);
