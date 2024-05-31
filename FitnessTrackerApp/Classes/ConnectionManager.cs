@@ -157,18 +157,18 @@ namespace FitnessTrackerApp.Classes
                         {
                             string routineName = reader.GetString(0);
                             string exerciseGUID = reader.GetString(1);
-                #region Panel routin
-                Panel routin = new Panel();
+                            #region Panel routin
+                            Panel routin = new Panel();
                             routin.Name = routineName;
-                routin.Size = new Size(930, 155);
-                routin.Location = new Point(0, 155);
-                routin.BackColor = Color.Beige;
-                routin.BorderStyle = BorderStyle.FixedSingle;
-                routin.Dock = DockStyle.Top;
-                #endregion
+                            routin.Size = new Size(930, 155);
+                            routin.Location = new Point(0, 155);
+                            routin.BackColor = Color.Beige;
+                            routin.BorderStyle = BorderStyle.FixedSingle;
+                            routin.Dock = DockStyle.Top;
+                            #endregion
                             AddControlsToRoutinPanel(routin, routineName, exerciseGUID);
-                routinPanel.Controls.Add(routin);
-            }
+                            routinPanel.Controls.Add(routin);
+                        }
                     }
                 }
             }
