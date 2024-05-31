@@ -159,6 +159,114 @@ namespace FitnessTrackerApp.Classes
                 AddControlsToPanel(routin, routinName);
                 routinPanel.Controls.Add(routin);
             }
+                    }
+                }
+            }
+        }
+        internal void PopulateWorkouts(Panel workoutPanel, List<string[]> workoutList, ProgressBar routonProgress)
+        {
+            workoutPanel.Controls.Clear();
+            for (int i = 0; i < workoutList.Count; i++)
+            {
+                string _exerName = workoutList[i][0].ToString();
+                string _weight = workoutList[i][1].ToString();
+                string _set = workoutList[i][2].ToString();
+                string _rep = workoutList[i][3].ToString();
+                #region Panel exerPanel
+                Panel exerPanel = new Panel();
+                exerPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                exerPanel.Dock = System.Windows.Forms.DockStyle.Top;
+                exerPanel.Name = $"{_exerName}Panel";
+                exerPanel.Size = new System.Drawing.Size(1020, 77);
+                exerPanel.BorderStyle = BorderStyle.FixedSingle;
+                #endregion
+                AddControlsToExercisePanel(exerPanel, _exerName, _weight, _set, _rep, routonProgress);
+                workoutPanel.Controls.Add(exerPanel);
+
+            }
+        }
+        private void AddControlsToExercisePanel(Panel _exerPanel, string _exerName, string _weight, string _set, string _rep, ProgressBar _routonProgress)
+        {
+            #region weight_lbl
+            Label weight_lbl = new Label();
+            weight_lbl.AutoSize = true;
+            weight_lbl.Font = new Font("Microsoft YaHei UI Light", 15F);
+            weight_lbl.ForeColor = Color.SaddleBrown;
+            weight_lbl.Location = new Point(229, 21);
+            weight_lbl.Name = "weight_lbl";
+            weight_lbl.Size = new Size(144, 32);
+            weight_lbl.Text = $"{_weight} KG";
+            weight_lbl.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            weight_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            #endregion
+            #region set_repLbl
+            Label set_repLbl = new Label();
+            set_repLbl.AutoSize = true;
+            set_repLbl.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15F);
+            set_repLbl.ForeColor = System.Drawing.Color.SaddleBrown;
+            set_repLbl.Location = new System.Drawing.Point(439, 21);
+            set_repLbl.Name = "set_repLbl";
+            set_repLbl.Size = new System.Drawing.Size(125, 32);
+            set_repLbl.Text = $"{_set} × {_rep}";
+            set_repLbl.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            set_repLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            #endregion
+            #region exerciseNameLbl
+            Label exerciseNameLbl = new Label();
+            exerciseNameLbl.AutoEllipsis = true;
+            exerciseNameLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            exerciseNameLbl.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 14F);
+            exerciseNameLbl.ForeColor = System.Drawing.Color.SaddleBrown;
+            exerciseNameLbl.Location = new System.Drawing.Point(615, 4);
+            exerciseNameLbl.Name = "exerciseNameLbl";
+            exerciseNameLbl.Size = new System.Drawing.Size(305, 69);
+            exerciseNameLbl.Text = _exerName;
+            exerciseNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            exerciseNameLbl.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            exerciseNameLbl.Anchor = AnchorStyles.Right;
+            #endregion
+            #region exerciseIsDoneCheck
+            CheckBox exerciseIsDoneCheck = new CheckBox();
+            exerciseIsDoneCheck.AutoSize = true;
+            exerciseIsDoneCheck.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15F);
+            exerciseIsDoneCheck.Location = new System.Drawing.Point(27, 15);
+            exerciseIsDoneCheck.Name = $"{_exerName}IsDoneCheck";
+            exerciseIsDoneCheck.Size = new System.Drawing.Size(97, 36);
+            exerciseIsDoneCheck.Text = "Done";
+            exerciseIsDoneCheck.UseVisualStyleBackColor = true;
+            exerciseIsDoneCheck.CheckedChanged += setDoneCheck_CheckedChanged;
+            #region Events
+            void setDoneCheck_CheckedChanged(object sender, EventArgs e)
+            {
+                if (exerciseIsDoneCheck.Checked == true)
+                {
+                    _exerPanel.BackColor = Color.LightGreen;
+                    _routonProgress.Value++;
+                }
+                else
+                {
+                    _exerPanel.BackColor = SystemColors.ActiveCaption;
+                    _routonProgress.Value--;
+                }
+            }
+            #endregion
+            #endregion
+            #region exerPic
+            PictureBox exerPic = new PictureBox();
+            //this.exerPic.Image = global::FitnessTrackerApp.Properties.Resources._28931101_Scissors__advanced___female__small_thumbnail_3x;
+            exerPic.Location = new System.Drawing.Point(945, 4);
+            exerPic.Name = $"{_exerName}Pic";
+            exerPic.Size = new System.Drawing.Size(70, 70);
+            exerPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            exerPic.TabIndex = 6;
+            exerPic.TabStop = false;
+            #endregion
+
+            _exerPanel.Controls.Add(weight_lbl);
+            _exerPanel.Controls.Add(exerciseIsDoneCheck);
+            _exerPanel.Controls.Add(exerPic);
+            _exerPanel.Controls.Add(set_repLbl);
+            _exerPanel.Controls.Add(exerciseNameLbl);
         }
         private void AddControlsToPanel(Panel routinPanel, string _routinName)
         {
