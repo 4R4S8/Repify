@@ -1,6 +1,7 @@
 ﻿using FitnessTrackerApp.Classes;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace FitnessTrackerApp.Forms
@@ -11,10 +12,22 @@ namespace FitnessTrackerApp.Forms
         private int elapsedSeconds = 0;
         internal static int workoutsCount = 0;
         ConnectionManager _connectionManager = new ConnectionManager();
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+    (
+        int nLeftRect,     // x-coordinate of upper-left corner
+        int nTopRect,      // y-coordinate of upper-left corner
+        int nRightRect,    // x-coordinate of lower-right corner
+        int nBottomRect,   // y-coordinate of lower-right corner
+        int nWidthEllipse, // width of ellipse
+        int nHeightEllipse // height of ellipse
+    );
         public WorkoutPage(string _routinName, List<string[]> _workoutDatas)
         {
             workoutsCount = _workoutDatas.Count;
             InitializeComponent();
+            //this.FormBorderStyle = FormBorderStyle.None;
+            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             routinNameLbl.Text = _routinName;
             routinProgress.Minimum = 0;
             routinProgress.Maximum = workoutsCount;
@@ -112,7 +125,7 @@ namespace FitnessTrackerApp.Forms
                 exerPanel.Controls.Add(weightLabel);
                 ResultPage.RoutinName = routinNameLbl.Text;
                 ResultPage.ElapsedTime = timespanLbl.Text;
-                ResultPage.Date = DateTime.Now.ToString("yyyy/MM/dd");
+                ResultPage.Date = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
                 resultPanel.Controls.Add(exerPanel);
             }
         }

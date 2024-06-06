@@ -30,7 +30,7 @@ namespace FitnessTrackerApp.Forms
             {
                 MessageBox.Show("Record Saved Succesfully");
                 this.Dispose();
-                _connectionManager.workoutPage.Dispose();
+                ConnectionManager.workoutPage.Dispose();
             }
         }
     }

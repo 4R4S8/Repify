@@ -1,4 +1,7 @@
-﻿namespace FitnessTrackerApp
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace FitnessTrackerApp
 {
     partial class Home
     {
@@ -28,12 +31,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.HomeTab = new System.Windows.Forms.TabPage();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.exrRecordLbl = new System.Windows.Forms.Label();
+            this.exrTotalSetLbl = new System.Windows.Forms.Label();
             this.exrVolumeLbl = new System.Windows.Forms.Label();
             this.exrTimeLbl = new System.Windows.Forms.Label();
             this.latestExcerizeNameLbl = new System.Windows.Forms.Label();
@@ -52,10 +58,11 @@
             this.exercisesDGV = new System.Windows.Forms.DataGridView();
             this.recordTab = new System.Windows.Forms.TabPage();
             this.recordsPanel = new System.Windows.Forms.Panel();
-            this.routinsList = new System.Windows.Forms.ListBox();
             this.recordDetailsDGV = new System.Windows.Forms.DataGridView();
             this.delRecBtn = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.DateLbl = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -148,7 +155,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FloralWhite;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.exrRecordLbl);
+            this.panel1.Controls.Add(this.exrTotalSetLbl);
             this.panel1.Controls.Add(this.exrVolumeLbl);
             this.panel1.Controls.Add(this.exrTimeLbl);
             this.panel1.Controls.Add(this.latestExcerizeNameLbl);
@@ -162,16 +169,16 @@
             this.panel1.Size = new System.Drawing.Size(1197, 604);
             this.panel1.TabIndex = 1;
             // 
-            // exrRecordLbl
+            // exrTotalSetLbl
             // 
-            this.exrRecordLbl.AutoSize = true;
-            this.exrRecordLbl.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15F);
-            this.exrRecordLbl.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.exrRecordLbl.Location = new System.Drawing.Point(61, 427);
-            this.exrRecordLbl.Name = "exrRecordLbl";
-            this.exrRecordLbl.Size = new System.Drawing.Size(104, 32);
-            this.exrRecordLbl.TabIndex = 5;
-            this.exrRecordLbl.Text = "[record]";
+            this.exrTotalSetLbl.AutoSize = true;
+            this.exrTotalSetLbl.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15F);
+            this.exrTotalSetLbl.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.exrTotalSetLbl.Location = new System.Drawing.Point(61, 427);
+            this.exrTotalSetLbl.Name = "exrTotalSetLbl";
+            this.exrTotalSetLbl.Size = new System.Drawing.Size(119, 32);
+            this.exrTotalSetLbl.TabIndex = 5;
+            this.exrTotalSetLbl.Text = "[total set]";
             // 
             // exrVolumeLbl
             // 
@@ -213,9 +220,9 @@
             this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label4.Location = new System.Drawing.Point(20, 370);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 40);
+            this.label4.Size = new System.Drawing.Size(150, 40);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Record";
+            this.label4.Text = "Total Set";
             // 
             // label3
             // 
@@ -224,9 +231,9 @@
             this.label3.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label3.Location = new System.Drawing.Point(20, 236);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 40);
+            this.label3.Size = new System.Drawing.Size(218, 40);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Volume";
+            this.label3.Text = "Total Volume";
             // 
             // label2
             // 
@@ -363,7 +370,7 @@
             this.exercisesDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.exercisesDGV.RowHeadersWidth = 51;
             this.exercisesDGV.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.exercisesDGV.RowTemplate.Height = 24;
+            this.exercisesDGV.RowTemplate.Height = 35;
             this.exercisesDGV.Size = new System.Drawing.Size(1227, 683);
             this.exercisesDGV.TabIndex = 0;
             // 
@@ -382,7 +389,6 @@
             // recordsPanel
             // 
             this.recordsPanel.BackColor = System.Drawing.Color.Linen;
-            this.recordsPanel.Controls.Add(this.routinsList);
             this.recordsPanel.Controls.Add(this.recordDetailsDGV);
             this.recordsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recordsPanel.Location = new System.Drawing.Point(3, 2);
@@ -391,46 +397,61 @@
             this.recordsPanel.Size = new System.Drawing.Size(1276, 735);
             this.recordsPanel.TabIndex = 0;
             // 
-            // routinsList
-            // 
-            this.routinsList.FormattingEnabled = true;
-            this.routinsList.ItemHeight = 16;
-            this.routinsList.Location = new System.Drawing.Point(28, 39);
-            this.routinsList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.routinsList.Name = "routinsList";
-            this.routinsList.Size = new System.Drawing.Size(284, 660);
-            this.routinsList.TabIndex = 1;
-            // 
             // recordDetailsDGV
             // 
+            this.recordDetailsDGV.AllowUserToAddRows = false;
+            this.recordDetailsDGV.AllowUserToDeleteRows = false;
             this.recordDetailsDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordDetailsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.recordDetailsDGV.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.recordDetailsDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aquamarine;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.recordDetailsDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.recordDetailsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.recordDetailsDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.delRecBtn});
-            this.recordDetailsDGV.Location = new System.Drawing.Point(332, 44);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 15F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.recordDetailsDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            this.recordDetailsDGV.Location = new System.Drawing.Point(28, 44);
             this.recordDetailsDGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.recordDetailsDGV.Name = "recordDetailsDGV";
+            this.recordDetailsDGV.ReadOnly = true;
             this.recordDetailsDGV.RowHeadersWidth = 51;
-            this.recordDetailsDGV.RowTemplate.Height = 24;
-            this.recordDetailsDGV.Size = new System.Drawing.Size(908, 659);
+            this.recordDetailsDGV.RowTemplate.Height = 35;
+            this.recordDetailsDGV.Size = new System.Drawing.Size(1212, 659);
             this.recordDetailsDGV.TabIndex = 0;
             // 
             // delRecBtn
             // 
+            this.delRecBtn.FillWeight = 30F;
             this.delRecBtn.HeaderText = "";
             this.delRecBtn.Image = global::FitnessTrackerApp.Properties.Resources.images;
             this.delRecBtn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.delRecBtn.MinimumWidth = 6;
             this.delRecBtn.Name = "delRecBtn";
+            this.delRecBtn.ReadOnly = true;
             this.delRecBtn.ToolTipText = "Delete";
-            this.delRecBtn.Width = 125;
+            this.delRecBtn.Width = 6;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.DateLbl);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -439,13 +460,38 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1290, 44);
             this.panel2.TabIndex = 3;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(1213, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 29);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "□";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1250, 6);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 29);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "X";
+            this.label5.Click += new System.EventHandler(this.label5_Click_1);
             // 
             // DateLbl
             // 
             this.DateLbl.AutoSize = true;
-            this.DateLbl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.DateLbl.Dock = System.Windows.Forms.DockStyle.Left;
             this.DateLbl.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateLbl.Location = new System.Drawing.Point(1067, 0);
+            this.DateLbl.Location = new System.Drawing.Point(139, 0);
             this.DateLbl.Name = "DateLbl";
             this.DateLbl.Size = new System.Drawing.Size(223, 37);
             this.DateLbl.TabIndex = 6;
@@ -479,7 +525,8 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1296, 834);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -516,13 +563,10 @@
         private System.Windows.Forms.TabPage HomeTab;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage Exercises;
         private System.Windows.Forms.TabPage Routins;
-        public System.Windows.Forms.Label exrRecordLbl;
+        public System.Windows.Forms.Label exrTotalSetLbl;
         public System.Windows.Forms.Label exrVolumeLbl;
         public System.Windows.Forms.Label exrTimeLbl;
         public System.Windows.Forms.Label latestExcerizeNameLbl;
@@ -532,14 +576,18 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel exercisPanel;
         private System.Windows.Forms.DataGridView exercisesDGV;
-        private System.Windows.Forms.Panel routinPanel;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Button addRoutinBtn;
         private System.Windows.Forms.TabPage recordTab;
         private System.Windows.Forms.Panel recordsPanel;
-        private System.Windows.Forms.ListBox routinsList;
         private System.Windows.Forms.DataGridView recordDetailsDGV;
-        private System.Windows.Forms.DataGridViewImageColumn delRecBtn;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private DataGridViewImageColumn delRecBtn;
+        public Label label4;
+        public Label label3;
+        public Label label2;
+        public Panel routinPanel;
     }
 }

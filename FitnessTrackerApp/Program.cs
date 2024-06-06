@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitnessTrackerApp.Classes;
+using System;
 using System.Windows.Forms;
 
 namespace FitnessTrackerApp
@@ -11,9 +12,12 @@ namespace FitnessTrackerApp
         [STAThread]
         static void Main()
         {
+            ConnectionManager _connectionManager = new ConnectionManager();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Home());
+            ConnectionManager.HomePage = new Home();
+            _connectionManager.PopulateHomePage();
+            Application.Run(ConnectionManager.HomePage);
 
 
         }

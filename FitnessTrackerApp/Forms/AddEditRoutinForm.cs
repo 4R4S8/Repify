@@ -34,16 +34,12 @@ namespace FitnessTrackerApp.Forms
 
             if (_weight != 0 && _rep != 0 && _set != 0 && _exerciseName != "select an exercise ..." && _exerciseName != "")
             {
-                routinExercisesRTxt.Text += $"{_exerciseName} \t\t {_weight}KG {_set} × {_rep}\n";
+                routinExercisesRTxt.Text += $"{_exerciseName.Replace("\r", "")} \t\t {_weight}KG {_set} × {_rep}\n";
                 exerciseList.Items.Remove(_exerciseName);
                 routinExercises.Add(new string[] { _exerciseName, _weight.ToString(), _set.ToString(), _rep.ToString() });
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
