@@ -11,7 +11,8 @@ namespace FitnessTrackerApp.Classes
 {
     internal class ConnectionManager
     {
-        public WorkoutPage workoutPage { get; set; }
+        public static WorkoutPage workoutPage;
+        public static Home HomePage;
         private readonly string _SQLiteDBPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Repify", "Repify.sqlite");
         private readonly string _SQLiteConncectionString = $"Data Source={Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Repify", "Repify.sqlite")};Version=3;";
         public string SQLiteDBPath
@@ -35,9 +36,8 @@ namespace FitnessTrackerApp.Classes
             }
             FileInfo _sqlFile = new FileInfo(_SQLiteDBPath);
 
-            if (File.Exists(_SQLiteDBPath) && _sqlFile.Length <= 0)
+            if (File.Exists(_SQLiteDBPath))
             {
-
                 using (var conn = new SQLiteConnection(_SQLiteConncectionString))
                 {
                     conn.Open();
@@ -45,17 +45,17 @@ namespace FitnessTrackerApp.Classes
                     using (var cmd = new SQLiteCommand(conn))
                     {
                         //Create a table named Exercise
-                        cmd.CommandText = "CREATE TABLE Exercise (exercise_guid TEXT, Name TEXT, muscle_group TEXT)";
+                        cmd.CommandText = "CREATE TABLE IF NOT EXISTS Exercise (exercise_guid TEXT, Name TEXT, muscle_group TEXT)";
                         cmd.ExecuteNonQuery();
 
                         //Create a table named Routine
 
-                        cmd.CommandText = "CREATE TABLE Routine (routine_guid TEXT, Name TEXT, workout_list_guid TEXT)";
+                        cmd.CommandText = "CREATE TABLE IF NOT EXISTS Routine (routine_guid TEXT, Name TEXT, workout_list_guid TEXT)";
                         cmd.ExecuteNonQuery();
 
                         //Create a table named workout_list
 
-                        cmd.CommandText = "CREATE TABLE workout_list (workout_list_guid TEXT, exercise_guid TEXT,weight INTEGER,sets INTEGER, rep INTEGER )";
+                        cmd.CommandText = "CREATE TABLE IF NOT EXISTS workout_list (workout_list_guid TEXT, exercise_guid TEXT,weight INTEGER,sets INTEGER, rep INTEGER )";
                         cmd.ExecuteNonQuery();
 
                         ////Create a table named Records
@@ -63,7 +63,7 @@ namespace FitnessTrackerApp.Classes
                         //cmd.ExecuteNonQuery();
 
                         //Create a table named Routin Record
-                        cmd.CommandText = "CREATE TABLE routin_record (routin_record_guid TEXT ,routine_name TEXT,total_set INTEGER, total_weight INTEGER, time_span TEXT, date TEXT)";
+                        cmd.CommandText = "CREATE TABLE IF NOT EXISTS routin_record (ID INTEGER PRIMARY KEY AUTOINCREMENT, routin_record_guid TEXT ,routine_name TEXT,total_set INTEGER, total_weight INTEGER, time_span TEXT, date TEXT)";
                         cmd.ExecuteNonQuery();
 
                     }
@@ -77,8 +77,10 @@ namespace FitnessTrackerApp.Classes
 
             List<string> exerciseNameFile = new List<string>();
             List<string> muscleGroupFile = new List<string>();
-            exerciseNameFile.AddRange(File.ReadLines(/*@"E:\4R4S8\دانشگاه\022\پروژه\FitnessTrackerApp\Assets\exercise-Name.txt"*/FitnessTrackerApp.Properties.Resources.exercise_Name));
-            muscleGroupFile.AddRange(File.ReadLines(/*@"E:\4R4S8\دانشگاه\022\پروژه\FitnessTrackerApp\Assets\muscle-group.txt"*/FitnessTrackerApp.Properties.Resources.muscle_group));
+
+            // Assuming "exercise_Name" and "muscle_group" are valid resource names
+            exerciseNameFile.AddRange(FitnessTrackerApp.Properties.Resources.exercise_Name.Split('\n'));
+            muscleGroupFile.AddRange(FitnessTrackerApp.Properties.Resources.muscle_group.Split('\n'));
 
             using (var connection = new SQLiteConnection(SQLiteConncectionString))
             {
@@ -103,6 +105,68 @@ namespace FitnessTrackerApp.Classes
                 }
             }
 
+        }
+        private LatestRecord GetTheLatestRecord()
+        {
+            var query = "SELECT *\r\nFROM routin_record\r\nORDER BY id DESC\r\nLIMIT 1;";
+            LatestRecord latestRecord = new LatestRecord();
+            using (var connection = new SQLiteConnection(SQLiteConncectionString))
+            {
+                connection.Open();
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = query;
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            var _routineName = "";
+                            var _totalSet = 0;
+                            var _totalWeight = 0;
+                            var _time = "";
+                            if (reader.Read())
+                            {
+                                _routineName = reader.GetString(2);
+                                _totalSet = reader.GetInt32(3);
+                                _totalWeight = reader.GetInt32(4);
+                                _time = reader.GetString(5);
+                            }
+                            latestRecord.Time = _time;
+                            latestRecord.RoutinName = _routineName;
+                            latestRecord.TotalWeight = $"{_totalWeight} KG";
+                            latestRecord.TotalSet = _totalSet;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+            }
+            return latestRecord;
+
+        }
+        internal void PopulateHomePage()
+        {
+            LatestRecord latestRecord = new LatestRecord();
+            latestRecord = GetTheLatestRecord();
+            if (latestRecord != null)
+            {
+                HomePage.latestExcerizeNameLbl.Text = latestRecord.RoutinName;
+                HomePage.exrTotalSetLbl.Text = latestRecord.TotalSet.ToString();
+                HomePage.exrTimeLbl.Text = latestRecord.Time;
+                HomePage.exrVolumeLbl.Text = latestRecord.TotalWeight;
+            }
+            else
+            {
+                HomePage.latestExcerizeNameLbl.Text = "There is no new Exercise";
+                HomePage.exrTotalSetLbl.Text = "0";
+                HomePage.exrTimeLbl.Text = "00:00:00";
+                HomePage.exrVolumeLbl.Text = "0KG";
+            }
         }
         internal void PopulateListBoxFromSqlite(ComboBox cmboBox)
         {
@@ -183,6 +247,20 @@ namespace FitnessTrackerApp.Classes
                 AddControlsToExercisePanel(exerPanel, _exerName, _weight, _set, _rep, routonProgress);
                 workoutPanel.Controls.Add(exerPanel);
 
+            }
+        }
+        internal void PopulateRecords(DataGridView _recordDGV)
+        {
+            string query = "SELECT routine_name as \"Routin Name\",total_set AS \"Total Set\",total_weight AS \"Total Weight\",time_span AS \"Time Span\",date AS Date FROM routin_record";
+            using (var connection = new SQLiteConnection(SQLiteConncectionString))
+            {
+                connection.Open();
+
+                var dataTable = new DataTable();
+                var dataAdapter = new SQLiteDataAdapter(query, connection);
+                dataAdapter.Fill(dataTable);
+
+                _recordDGV.DataSource = dataTable;
             }
         }
         private void AddControlsToExercisePanel(Panel _exerPanel, string _exerName, string _weight, string _set, string _rep, ProgressBar _routonProgress)
@@ -279,9 +357,8 @@ namespace FitnessTrackerApp.Classes
                     string _rep = routinDGV.Rows[i].Cells[3].Value.ToString();
                     workoutDatas.Add(new string[] { _exerName, _weight, _set, _rep });
                 }
-                WorkoutPage _workoutPage = new WorkoutPage(_routinName, workoutDatas);
-                workoutPage = _workoutPage;
-                _workoutPage.ShowDialog();
+                workoutPage = new WorkoutPage(_routinName, workoutDatas);
+                workoutPage.ShowDialog();
             }
             #endregion
 
@@ -342,9 +419,11 @@ namespace FitnessTrackerApp.Classes
             {
                 using (var connection = new SQLiteConnection(SQLiteConncectionString))
                 {
+                    //routin_record_guid TEXT ,routine_name TEXT,total_set INTEGER, total_weight INTEGER, time_span TEXT, date TEXT
                     connection.Open();
                     Guid recordGUID = Guid.NewGuid();
-                    string RoutineSQL = "INSERT INTO routin_record VALUES (@guid, @name,@total_set,@total_weight,@time_span,@date)";
+                    string RoutineSQL = "INSERT INTO routin_record (routin_record_guid, routine_name, total_set, total_weight, time_span, date) VALUES (@guid, @name, @total_set, @total_weight, @time_span, @date)";
+
                     using (var command = new SQLiteCommand(RoutineSQL, connection))
                     {
                         command.Parameters.AddWithValue("@guid", recordGUID.ToString());
