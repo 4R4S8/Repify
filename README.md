@@ -4,15 +4,18 @@
 
 **Repify** is a fitness tracker application designed to help users monitor and improve their physical activity and health. Developed as a university project, Repify utilizes the latest technologies to provide a user-friendly interface and reliable tracking of fitness metrics. Whether you're a fitness enthusiast or just starting your wellness journey, Repify is your go-to app for staying on top of your fitness goals.
 
-## Screenshots
+## Screenshots 🖼️
 
-!Home Screen
+![HomePage](https://github.com/4R4S8/FitnessTrackerApp/assets/64580530/332e5213-1cf7-4e4b-bdb6-ef434343fd05)
 
-!Workout Tracking
-*Tracking a workout session in progress*
 
-!Statistics
-*Viewing the workout statistics and progress*
+![workoutPage](https://github.com/4R4S8/FitnessTrackerApp/assets/64580530/b736b7cf-1561-48df-abd1-b38c05771a6b)
+
+
+![RoutinsPage](https://github.com/4R4S8/FitnessTrackerApp/assets/64580530/7f0b0a1d-2e02-48d5-b7e9-27eb7aad38d2)
+
+
+![RecordsPage](https://github.com/4R4S8/FitnessTrackerApp/assets/64580530/278a8fe2-5509-4733-9516-785cdbf6410e)
 
 ## Installation 🧑‍🏫
 
