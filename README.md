@@ -1,5 +1,8 @@
 # Repify - Fitness Tracker
 
+## نسخه فارسی README هم موجود است [README-fa.md](README-fa.md)
+
+
 ## Description 🔌
 
 **Repify** is a fitness tracker application designed to help users monitor and improve their physical activity and health. Developed as a university project, Repify utilizes the latest technologies to provide a user-friendly interface and reliable tracking of fitness metrics. Whether you're a fitness enthusiast or just starting your wellness journey, Repify is your go-to app for staying on top of your fitness goals.
